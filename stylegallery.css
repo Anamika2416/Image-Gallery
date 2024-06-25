@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /*taki agr aap content add kro to content kaa size chota ho jaye but box ka size change naa ho box size remains same*/
+}
+#wrapper{
+    height: 100vh;
+    overflow-x: hidden; /* to stop overflow in right direction i.e in x -axis*/
+    overflow-y: auto;  /* to allow overflow in y-axis*/
+}
+.container{
+   height: 100% ;
+   max-width:1200px;
+   margin: 0 auto; /*0 is both top and bottom margin and auto is right and left margin-jb do value likhte hai to aisa hota hai*/
+    /*ye margin ka shorthand notation hai :left side aur right side me iss tarah se margin lgaya jata hai ki content center me aa jaye i.e. left and right exactly equal*/
+   padding: 20px;  /* border ke aur content ke bich ke space ko padding bolte hai*/ 
+}
+.container h1{  /* yaha h1 v sirf likh skte hai*/
+    margin: 20px 0;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 3rem;
+}
+.gallery{
+    /*creating flex*/
+     display: flex;/* default main axis is horizontal*/
+     flex-wrap: wrap;/* agr flex wrap ko wrap nhi kiya to sari elements single row me aa jayegi*/
+     justify-content: space-between;  /* to get space between elements*/
+}
+.card{
+    width: 32%;  /*card width 32% q ki 32 +32+32 aur bcha 4% will be used for spacing*/
+    /*height jitna flex box ke card ko mila hai utna hi hieght hogi*/
+    position: relative; /*text ko overlap krwana hai img pe isliye uske class ki position relative krni hogi*/
+    margin-bottom: 20px;
+    border-radius: 10px; /*img ke corner ko round krne ke liye */
+    overflow: hidden; /*to hide overflow in x and y direction*/
+}
+.card img{
+    /*card image ka parent hai*/
+    height: 100%;/*card ki jitni height aur width hai utni hi image ki v ho jayegi,height lgane se img ki corner round ho jayegi*/
+    width: 100%;
+    filter: grayscale(100%);  /*black & white ka filter*/
+    box-shadow: 0 0 20px #333;
+    /*object-fit: cover;*/ /*not imp*/
+}
+.card:hover{
+    transform: scale(1.03);
+    filter: drop-shadow(0 0 10px #333); 
+    transition: 0.5s;
+}
+.card:hover img{
+   filter: grayscale(0%);
+}
+.card figcaption{
+    position: absolute; /*overlap krne ke liye position absolute krna hoga*/
+    bottom: 0;
+    left: 0;
+    padding: 25px;
+    width: 100%;
+    height: 20%;
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+    opacity: 0%; /*transparent ho text dikhe naa*/
+    border-radius: 0 0 10px 10px;
+    background: linear-gradient(0deg, rgba(0,0,0,00.5s) 0%,rgba(255,255,255,0));
+    transition: 0.3s;
+}
+.card:hover figcaption{
+    opacity: 1;
+    transform: scale(1.03); /*size increase krna*/
+}
